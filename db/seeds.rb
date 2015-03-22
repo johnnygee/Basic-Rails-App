@@ -6,6 +6,17 @@
 require 'faker'
  
  # Create Posts
+ p = Post.where(title: "my great post")
+ if p.count == 0
+ # p = Post.find_by_title("my great post")
+ # if p.blank?
+  Post.create!(
+    title: "my great post",
+    body: "my great description"
+  )
+ end
+ 
+
  50.times do
    Post.create!(
      title:  Faker::Lorem.sentence,
