@@ -18,7 +18,7 @@ require 'faker'
   Advertisement.create!(
     title:  Faker::Lorem.sentence,
     copy:   Faker::Lorem.paragraph, 
-    price:  Faker::Lorem.word
+    price:  Faker::Commerce.price
     )
 end
 advertisements = Advertisement.all
