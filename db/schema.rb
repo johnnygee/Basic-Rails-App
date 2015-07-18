@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401030455) do
+ActiveRecord::Schema.define(version: 20150510212019) do
 
-  create_table "advertisements", force: true do |t|
-    t.string   "title"
+  create_table "advertisements", force: :cascade do |t|
+    t.string   "title",      limit: 255
     t.text     "copy"
     t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "post_id"
     t.datetime "created_at"
@@ -30,12 +30,20 @@ ActiveRecord::Schema.define(version: 20150401030455) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
 
-  create_table "posts", force: true do |t|
-    t.string   "title"
-    t.string   "body"
-    t.string   "text"
+  create_table "posts", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.string   "body",       limit: 255
+    t.string   "text",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "resolved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
