@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+skip_before_action :flash_attack, :only => [:index, :new]
+
   def index
     @posts = Post.all
   end
@@ -8,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+   @post = Post.new
   end
 
   def create
